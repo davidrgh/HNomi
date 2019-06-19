@@ -13,6 +13,7 @@ namespace HNomi.Entities
         public DbSet<TipoNominaEntity> TiposNomina { get; set; }
         public DbSet<DetallesTipoNominaEntity> DetallesTipoNomina { get; set; }
         public DbSet<ImpuestosEntity> Impuestos { get; set; }
+        public DbSet<TurnosTrabajoEntity> TurnosTrabajo { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -36,7 +37,7 @@ namespace HNomi.Entities
             modelBuilder.Entity<DetallesTipoNominaEntity>().Property(d => d.EsPorUnidad).HasDefaultValue(true);
             modelBuilder.Entity<DetallesTipoNominaEntity>().Property(d => d.Precio).IsRequired();
 
-            modelBuilder.Entity<DetallesTipoNominaEntity>().HasOne<TipoNominaEntity>("Nomina");
+            modelBuilder.Entity<DetallesTipoNominaEntity>().HasOne<TipoNominaEntity>(d=>d.Nomina).WithMany(n=>n.Detalles).OnDelete(DeleteBehavior.Cascade);
 
 
             modelBuilder.Entity<ImpuestosEntity>().HasKey(i => i.Id);
@@ -46,7 +47,10 @@ namespace HNomi.Entities
             modelBuilder.Entity<ImpuestosEntity>().Property(i => i.Porcentaje).IsRequired();
             modelBuilder.Entity<ImpuestosEntity>().Property(i => i.Porcentaje).HasDefaultValue(0);
 
-            modelBuilder.Entity<ImpuestosEntity>().HasOne<TipoNominaEntity>("Nomina");
+            modelBuilder.Entity<ImpuestosEntity>().HasOne<TipoNominaEntity>(d=>d.Nomina).WithMany(n=>n.Impuestos).OnDelete(DeleteBehavior.Cascade);
+
+
+            modelBuilder.Entity<TurnosTrabajoEntity>().Property(tt => tt.EsTurnoPartido).HasDefaultValue(false);
 
         }
 

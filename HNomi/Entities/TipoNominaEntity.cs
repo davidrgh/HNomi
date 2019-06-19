@@ -11,7 +11,7 @@ namespace HNomi.Entities
         public string Nombre { get; set; }
         public DateTime Nocturnidad { get; set; }
 
-        public virtual IEnumerable<DetallesTipoNominaEntity> Detalles { get; set; }
-        public virtual IEnumerable<ImpuestosEntity> Impuestos { get; set; }
+        public virtual ICollection<DetallesTipoNominaEntity> Detalles { get; set; }
+        public virtual ICollection<ImpuestosEntity> Impuestos { get; set; }
     }
 }

@@ -3,14 +3,16 @@ using System;
 using HNomi.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HNomi.Migrations
 {
     [DbContext(typeof(HNomiContext))]
-    partial class HNomiContextModelSnapshot : ModelSnapshot
+    [Migration("20190619125841_Navegacion-delete-cascada")]
+    partial class Navegaciondeletecascada
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,30 +80,6 @@ namespace HNomi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TiposNomina");
-                });
-
-            modelBuilder.Entity("HNomi.Entities.TurnosTrabajoEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<bool>("EsTurnoPartido")
-                        .ValueGeneratedOnAdd()
-                        .HasDefaultValue(false);
-
-                    b.Property<DateTime>("Fecha");
-
-                    b.Property<DateTime>("HoraDesdeTurno1");
-
-                    b.Property<DateTime>("HoraDesdeTurno2");
-
-                    b.Property<DateTime?>("HoraHastaTurno1");
-
-                    b.Property<DateTime?>("HoraHastaTurno2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TurnosTrabajo");
                 });
 
             modelBuilder.Entity("HNomi.Entities.DetallesTipoNominaEntity", b =>

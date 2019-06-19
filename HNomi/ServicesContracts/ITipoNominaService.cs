@@ -13,6 +13,7 @@ namespace HNomi.ServicesContracts
         Task<EstructuraNomina> GetEstructuraNomina(int id);
         Task<TipoNomina> NuevaNomina(TipoNomina nomina);
         Task<TipoNomina> ActualizarNomina(int id, TipoNomina nomina);
+        Task<bool> BorrarNomina(int id);
 
     }
 }

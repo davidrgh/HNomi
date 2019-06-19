@@ -13,26 +13,25 @@ namespace HNomi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TipoNominaController : ControllerBase
+    public class TurnosTrabajoController : ControllerBase
     {
 
-        private readonly ITipoNominaService _tipoNominaService;
+        private readonly ITurnosTrabajoService _turnosService;
 
-        public TipoNominaController(ITipoNominaService tipoNominaService)
+        public TurnosTrabajoController(ITurnosTrabajoService turnosService)
         {
-            _tipoNominaService = tipoNominaService;
+            _turnosService = turnosService;
         }
 
-        
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         [HttpGet("{id}")]
         public async Task<IActionResult> Obtener(int id)
         {
-            var nomina = await _tipoNominaService.GetNomina(id);
-            if (nomina != null)
+            var turno = await _turnosService.GetTurno(id);
+            if (turno != null)
             {
-                return Ok(nomina);
+                return Ok(turno);
             }
             else
             {
@@ -40,31 +39,17 @@ namespace HNomi.Controllers
             }
         }
 
-
-        [HttpGet("Todo/{id}")]
-        public async Task<IActionResult> ObtenerEstructuraNomina(int id)
-        {
-            var nomina = await _tipoNominaService.GetEstructuraNomina(id);
-            if (nomina != null)
-            {
-                return Ok(nomina);
-            }
-            else
-            {
-                return NotFound();
-            }
-        }
 
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [HttpPost]
-        public async Task<IActionResult> Nuevo([FromBody]TipoNominaModel tipoNomina)
+        public async Task<IActionResult> Nuevo([FromBody]TurnosTrabajoModel turnoTrabajo)
         {
-            var nomina = await _tipoNominaService.NuevaNomina(Mapper.Map<TipoNomina>(tipoNomina));
+            var turno = await _turnosService.NuevoTurno(Mapper.Map<TurnosTrabajo>(turnoTrabajo));
 
-            if (nomina != null)
+            if (turno != null)
             {
-                return Ok(nomina);
+                return Ok(turno);
             }
             else
             {
@@ -72,16 +57,17 @@ namespace HNomi.Controllers
             }
         }
 
+
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         [HttpPut("{id}")]
-        public async Task<IActionResult> Actualizar(int id, [FromBody]TipoNominaModel tipoNomina)
+        public async Task<IActionResult> Actualizar(int id, [FromBody]TurnosTrabajoModel turnoTrabajo)
         {
-            var nomina = await _tipoNominaService.ActualizarNomina(id, Mapper.Map<TipoNomina>(tipoNomina));
+            var turno = await _turnosService.Actualizarturno(id, Mapper.Map<TurnosTrabajo>(turnoTrabajo));
 
-            if (nomina != null)
+            if (turno != null)
             {
-                return Ok(nomina);
+                return Ok(turno);
             }
             else
             {
@@ -89,12 +75,13 @@ namespace HNomi.Controllers
             }
         }
 
+
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Borrar(int id)
         {
-            var resultado = await _tipoNominaService.BorrarNomina(id);
+            var resultado = await _turnosService.BorrarTurno(id);
 
             if (resultado)
             {

@@ -58,5 +58,22 @@ namespace HNomi.Repositories
 
             return nominaOriginal;
         }
+
+        public async Task<bool> Delete(int id)
+        {
+
+            var nominaBorrar = await Get(id);
+
+            if (nominaBorrar == null)
+            {
+                return false;
+            }
+
+            _context.TiposNomina.Remove(nominaBorrar);
+            _context.SaveChanges();
+
+            return true;
+
+        }
     }
 }

@@ -12,6 +12,7 @@ namespace HNomi.RepositoriesContracts
         Task<TipoNominaEntity> GetEstructura(int id);
         Task<TipoNominaEntity> Add(TipoNominaEntity tipoNomina);
         Task<TipoNominaEntity> Edit(int id, TipoNominaEntity tipoNomina);
+        Task<bool> Delete(int id);
         Task<bool> Exist(int id);
     }
 }
