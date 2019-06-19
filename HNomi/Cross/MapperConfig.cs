@@ -28,6 +28,12 @@ namespace HNomi.Cross
                     cfg.CreateMap<ImpuestosEntity, Impuesto>();
                     cfg.CreateMap<Impuesto, ImpuestosEntity>();
                     cfg.CreateMap<ImpuestosModel, Impuesto>();
+
+                    cfg.CreateMap<TurnosTrabajoEntity, TurnosTrabajo>();
+                    cfg.CreateMap<TurnosTrabajo, TurnosTrabajoEntity>();
+                    cfg.CreateMap<TurnosTrabajoModel, TurnosTrabajo>();
+
+                    cfg.CreateMap<BusquedaFechasModel, BusquedaFechas>();
                 }
 
             );

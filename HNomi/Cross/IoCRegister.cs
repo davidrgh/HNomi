@@ -26,6 +26,7 @@ namespace HNomi.Cross
             services.AddTransient<ITipoNominaService, TipoNominaService>();
             services.AddTransient<IDetallesTipoNominaService, DetallesTipoNominaService>();
             services.AddTransient<IImpuestosService, ImpuestosService>();
+            services.AddTransient<ITurnosTrabajoService, TurnosTrabajoService>();
 
             return services;
         }
@@ -35,6 +36,7 @@ namespace HNomi.Cross
             services.AddTransient<ITipoNominaRepository, TipoNominaRepository>();
             services.AddTransient<IDetallesTipoNominaRepository, DetallesTipoNominaRepository>();
             services.AddTransient<IImpuestosRepository, ImpuestosRepository>();
+            services.AddTransient<ITurnosTrabajoRepository, TurnosTrabajoRepository>();
 
             return services;
         }    

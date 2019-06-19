@@ -39,6 +39,22 @@ namespace HNomi.Controllers
             }
         }
 
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        [HttpPost("busqueda")]
+        public async Task<IActionResult> ObtenerEntreFechas([FromBody]BusquedaFechasModel rangoFechas)
+        {
+            var turno = await _turnosService.GetTurnosEntreFechas(rangoFechas.desdeFecha, rangoFechas.hastaFecha);
+            if (turno != null)
+            {
+                return Ok(turno);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
 
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
