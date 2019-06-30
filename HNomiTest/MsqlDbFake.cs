@@ -29,11 +29,12 @@ namespace HNomiTest
         {
             get
             {
-                var connection = new MySqlConnection("DataSource=:memory");
-                connection.Open();
+                /*var connection = new MySqlConnection("DataSource=:memory");
+                connection.Open();*/
 
                 var options = new DbContextOptionsBuilder<HNomiContext>()
-                                    .UseMySql(connection).Options;
+                                    .UseInMemoryDatabase(databaseName: "BBDDPruebas")
+                                    .Options;
 
                 return options;
             }

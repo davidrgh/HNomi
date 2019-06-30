@@ -62,6 +62,10 @@ namespace HNomi.Controllers
         [HttpPost]
         public async Task<IActionResult> Nuevo([FromBody]TipoNominaModel tipoNomina)
         {
+            if (tipoNomina.Nombre == null)
+            {
+                return BadRequest();
+            }
             var nomina = await _tipoNominaService.NuevaNomina(Mapper.Map<TipoNomina>(tipoNomina));
 
             if (nomina != null)

@@ -22,6 +22,7 @@ namespace HNomiTest
                 context.TiposNomina.Add(new TipoNominaEntity { Nombre = "Nomina 1", Nocturnidad = new DateTime(2019, 6, 30, 0, 0, 0, 0) });
                 context.TiposNomina.Add(new TipoNominaEntity { Nombre = "Nomina 2", Nocturnidad = new DateTime(2019, 6, 30, 23, 0, 0, 0) });
                 context.TiposNomina.Add(new TipoNominaEntity { Nombre = "Nomina 3", Nocturnidad = new DateTime(2019, 6, 30, 23, 30, 0, 0) });
+                context.SaveChanges();
             }
         }
 
@@ -45,15 +46,40 @@ namespace HNomiTest
             using (var context = _mysql.GetDBContext())
             {
                 var tipoNomina = context.TiposNomina.Find(id);
-                TipoNomina nomina = Mapper.Map<TipoNomina>(tipoNomina);
-
+                if (tipoNomina == null)
+                {
+                    return null;
+                }
+                TipoNomina nomina = new TipoNomina()
+                {
+                    Nombre = tipoNomina.Nombre,
+                    Nocturnidad = tipoNomina.Nocturnidad
+                };
+                    
+                  
                 return nomina;
             }
         }
 
-        public Task<TipoNomina> NuevaNomina(TipoNomina nomina)
+        public async Task<TipoNomina> NuevaNomina(TipoNomina nomina)
         {
-            throw new NotImplementedException();
+            using (var context = _mysql.GetDBContext())
+            {
+                TipoNominaEntity nominaE = Mapper.Map<TipoNominaEntity>(nomina);
+                var tipoNomina = context.TiposNomina.Add(nominaE);
+                if (tipoNomina == null)
+                {
+                    return null;
+                }
+                /*TipoNomina nomina = new TipoNomina()
+                {
+                    Nombre = tipoNomina.Nombre,
+                    Nocturnidad = tipoNomina.Nocturnidad
+                };*/
+
+
+                return nomina;
+            }
         }
     }
 }
