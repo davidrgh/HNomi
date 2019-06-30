@@ -37,7 +37,17 @@ namespace HNomi
                     }
                ));
 
-            IoCRegister.AddRegistration(services);
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+
+                        builder.WithOrigins("http://localhost:4200");
+                    });
+            });
+
+                IoCRegister.AddRegistration(services);
             SwaggerConfig.AddRegistration(services);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

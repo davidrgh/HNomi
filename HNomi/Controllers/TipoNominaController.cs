@@ -6,6 +6,7 @@ using AutoMapper;
 using HNomi.Models;
 using HNomi.ServicesContracts;
 using HNomi.ViewModels;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,6 +14,7 @@ namespace HNomi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors]
     public class TipoNominaController : ControllerBase
     {
 
