@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="07/03/2019 23:38:34" ReportInfo.Modified="07/04/2019 00:16:33" ReportInfo.CreatorVersion="2019.3.10.0">
+  <Dictionary>
+    <JsonDataSourceConnection Name="Connection" ConnectionString="rijcmlq2+PJxoIT7htBT4hAqKdGgEy403kXPVGU58PXF1t1OAD4rTw4KRAlolhYCpVog2i2">
+      <JsonTableDataSource Name="JSON" DataType="FastReport.Data.JsonConnection.JsonParser.JsonArray" Enabled="true" TableName="JSON">
+        <Column Name="index" DataType="System.Int32"/>
+      </JsonTableDataSource>
+    </JsonDataSourceConnection>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="37.8"/>
+    <PageHeaderBand Name="PageHeader1" Top="41.8" Width="718.2" Height="37.8">
+      <TextObject Name="Text1" Left="236.25" Top="9.45" Width="359.1" Height="18.9" Text="PRUEBA DE FAST REPORT" Font="Arial, 16pt, style=Bold"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="83.6" Width="718.2" Height="75.6">
+      <TextObject Name="Text2" Left="9.45" Top="9.45" Width="198.45" Height="18.9" Text="[datos.nombre]" Font="Arial, 10pt, style=Bold"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="163.2" Width="718.2" Height="18.9"/>
+  </ReportPage>
+</Report>

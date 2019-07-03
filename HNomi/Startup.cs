@@ -70,6 +70,11 @@ namespace HNomi
             SwaggerConfig.AddRegistration(app);
 
             app.UseHttpsRedirection();
+
+            app.UseFastReport();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
             app.UseMvc();
         }
     }
